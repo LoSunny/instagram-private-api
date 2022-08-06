@@ -78,6 +78,13 @@ export interface ReelsMediaFeedResponseItem {
   story_quizs?: ReelsMediaFeedResponseStoryQuizsItem[];
   story_sliders?: ReelsMediaFeedResponseStorySlidersItem[];
   story_countdowns?: ReelsMediaFeedResponseStoryCountdownsItem[];
+  story_feed_media?: ReelsMediaFeedResponseFeedMedia[];
+  story_locations?: ReelsMediaFeedResponseStoryLocation[];
+  location?: ReelsMediaFeedResponseLocation;
+  story_hashtags?: ReelsMediaFeedResponseHashtagItem[];
+  creative_config?: ReelsMediaFeedResponseCreativeConfig;
+  story_app_attribution?: ReelsMediaFeedResponseAppAttribution;
+  story_music_stickers?: ReelsMediaFeedResponseMusicStickers[];
 }
 export interface ReelsMediaFeedResponseStoryPollsItem {
   x: number;
@@ -231,6 +238,7 @@ export interface ReelsMediaFeedResponseReelMentionsItem {
   user: ReelsMediaFeedResponseUser;
 }
 export interface ReelsMediaFeedResponseStoryCtaItem {
+  cta_type: string;
   links: ReelsMediaFeedResponseLinksItem[];
 }
 export interface ReelsMediaFeedResponseLinksItem {
@@ -244,4 +252,164 @@ export interface ReelsMediaFeedResponseLinksItem {
   leadGenFormId: string;
   igUserId: string;
   appInstallObjectiveInvalidationBehavior: null;
+}
+export interface ReelsMediaFeedResponseFeedMedia {
+  x: string;
+  y: string;
+  z: number;
+  width: number;
+  height: number;
+  rotation: number;
+  is_pinned: number;
+  is_hidden: number;
+  is_sticker: number;
+  is_fb_sticker: number;
+  media_id: string;
+  product_type: string;
+  media_code: string;
+}
+export interface ReelsMediaFeedResponseStoryLocation {
+  x: string;
+  y: string;
+  z: number;
+  width: string;
+  height: string;
+  rotation: number;
+  is_pinned: number;
+  is_hidden: number;
+  is_sticker: number;
+  is_fb_sticker: number;
+  location: ReelsMediaFeedResponseLocation;
+}
+export interface ReelsMediaFeedResponseLocation {
+  pk: number;
+  short_name: string;
+  facebook_places_id: number;
+  external_source: string;
+  name: string;
+  address: string;
+  city: string;
+  has_viewer_saved: boolean;
+  lng: number;
+  lat: number;
+  is_eligible_for_guides: boolean;
+}
+export interface ReelsMediaFeedResponseHashtagItem {
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  rotation: number;
+  is_pinned: number;
+  is_hidden: number;
+  is_sticker: number;
+  is_fb_sticker: number;
+  hashtag: ReelsMediaFeedResponseHashtag;
+}
+export interface ReelsMediaFeedResponseHashtag {
+  name: string;
+  id: number;
+}
+export interface ReelsMediaFeedResponseCreativeConfig {
+  camera_facing: string;
+  capture_type: string;
+  should_render_try_it_on: boolean;
+  effect_ids?: number[];
+  face_effect_id?: number;
+  persisted_effect_metadata_json?: string;
+  failure_reason?: string;
+  effect_preview: ReelsMediaFeedResponseCreativeConfigEffect;
+  effect_configs: ReelsMediaFeedResponseCreativeConfigEffect[];
+}
+export interface ReelsMediaFeedResponseCreativeConfigEffect {
+  name: string;
+  id: string;
+  failure_reason?: string;
+  failure_code?: string;
+  gatekeeper: string; // Unknown
+  gatelogic: string; // Unknown
+  attribution_user_id: string;
+  attribution_user: ReelsMediaFeedResponseEffectUser;
+  save_status: string;
+  effect_actions: string[];
+  is_spot_recognition_effect?: boolean;
+  is_spot_effect?: boolean;
+  thumbnail_image: { uri: string };
+  effect_action_sheet: { primary_actions: string[]; secondary_actions: string[] };
+  device_position: string; // Unknown
+  fan_club?: string; // Unknown
+}
+export interface ReelsMediaFeedResponseEffectUser {
+  instagram_user_id: string;
+  username: string;
+  profile_picture: { uri: string };
+}
+export interface ReelsMediaFeedResponseAppAttribution {
+  app_action_text: string;
+  app_icon_url: string;
+  content_url: string;
+  preview_url: string;
+  id: number;
+  link: string;
+  name: string;
+}
+export interface ReelsMediaFeedResponseMusicStickers {
+  x: number;
+  y: number;
+  z: number;
+  width: number;
+  height: number;
+  rotation: number;
+  is_pinned: number;
+  is_hidden: number;
+  is_sticker: number;
+  is_fb_sticker: number;
+  music_asset_info: ReelsMediaFeedResponseMusicAssetInfo;
+}
+export interface ReelsMediaFeedResponseMusicAssetInfo {
+  audio_cluster_id: string;
+  id: string;
+  title: string;
+  subtitle: string;
+  display_artist: string;
+  artist_id: string; // Unknown
+  cover_artwork_uri: string;
+  cover_artwork_thumbnail_uri: string;
+  progressive_download_url: string;
+  fast_start_progressive_download_url: string;
+  web_30s_preview_download_url: string; // Unknown
+  reactive_audio_download_url: string; // Unknown
+  highlight_start_times_in_ms: number[];
+  is_explicit: boolean;
+  dash_manifest: string;
+  has_lyrics: boolean;
+  audio_asset_id: string;
+  duration_in_ms: number;
+  dark_message: string;
+  allows_saving: boolean;
+  territory_validity_periods: {};
+  ig_artist: ReelsMediaFeedResponseMusicArtist;
+  placeholder_profile_pic_url: string;
+  should_mute_audio: boolean;
+  should_mute_audio_reason: string;
+  should_mute_audio_reason_type: string; // Unknown
+  is_bookmarked: boolean;
+  overlap_duration_in_ms: number;
+  audio_asset_start_time_in_ms: number;
+  allow_media_creation_with_music: boolean; // Unknown
+  is_trending_in_clips: boolean;
+  formatted_clips_media_count: number; // Unknown
+  streaming_services: string; // Unknown
+  display_labels: string; // Unknown
+}
+export interface ReelsMediaFeedResponseMusicArtist {
+  pk: number;
+  username: string;
+  full_name: string;
+  is_private: boolean;
+  profile_pic_url: string;
+  profile_pic_id: string;
+  is_verified: boolean;
+  follow_friction_type: boolean;
 }
